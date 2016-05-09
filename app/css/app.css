@@ -31,4 +31,5 @@ a[ng-click]{
 .thumbnail-image {
     display: inline-block;
     padding: 15px;
+    max-width: 100%;
 }
