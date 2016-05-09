@@ -1,35 +1,35 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">{{ phone.name }}</h1>
+        <h1 class="page-header">{{ $ctrl.phone.name }}</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-5">
-        <img class="img-responsive" ng-src="{{ phone.images[0] }}" alt="">
+        <img class="img-responsive" ng-src="{{ $ctrl.phone.images[0] }}" alt="">
     </div>
     <div class="col-md-7">
-        <p>{{ phone.description }}</p>
+        <p>{{ $ctrl.phone.description }}</p>
     </div>
     <div class="col-md-7">
         <div class="row">
             <div class="col-md-6">
                 <h3>Battery</h3>
                 <h4>Type</h4>
-                {{ phone.battery.type }}
+                {{ $ctrl.phone.battery.type }}
                 <h4>Talk Time</h4>
-                {{ phone.battery.talkTime }}
+                {{ $ctrl.phone.battery.talkTime }}
                 <h4>Standby time (max)</h4>
-                {{ phone.battery.standbyTime }}
+                {{ $ctrl.phone.battery.standbyTime }}
             </div>
             <div class="col-md-6">
                 <h3>Technical specs</h3>
                 <h4>RAM</h4>
-                {{ phone.storage.ram }}
+                {{ $ctrl.phone.storage.ram }}
                 <h4>Internal Storage</h4>
-                {{ phone.storage.flash }}
+                {{ $ctrl.phone.storage.flash }}
                 <h4>CPU</h4>
-                {{ phone.hardware.cpu }}
+                {{ $ctrl.phone.hardware.cpu }}
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
         <h3 class="page-header">Additional images</h3>
     </div>
 
-    <div class="col-sm-3 col-xs-6" ng-repeat="image in phone.images">
+    <div class="col-sm-3 col-xs-6" ng-repeat="image in $ctrl.phone.images">
         <img class="img-responsive img-related" ng-src="{{ image }}" alt="">
     </div>
 </div>
