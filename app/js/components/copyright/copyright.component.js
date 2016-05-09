@@ -1,6 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Attribute } from '@angular/core';
 
-import { ACTUAL_YEAR } from '../../actual-year.token';
 import template from './copyright.tpl.html';
 
 @Component({
@@ -9,7 +8,7 @@ import template from './copyright.tpl.html';
 })
 export class CopyrightComponent {
 
-  constructor(@Inject(ACTUAL_YEAR) actualYear) {
+  constructor(@Inject('ACTUAL_YEAR') actualYear) {
     this.actualYear = actualYear;
   }
 
