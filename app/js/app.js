@@ -2,7 +2,7 @@
 
 import { PhoneRepositoryService } from './services/phone-repository/phone-repository.service';
 import { CarrierRepositoryService } from './services/carrier-repository/carrier-repository.service';
-
+import { FilteredPhoneListService } from './services/filtered-phone-list/filtered-phone-list.service';
 
 import { ShortDescriptionFilter } from './filters/short-description/short-description.filter';
 
@@ -21,6 +21,7 @@ angular
 
   .service('phoneRepository', PhoneRepositoryService.create())
   .service('carrierRepository', CarrierRepositoryService.create())
+  .service('filteredPhoneList', FilteredPhoneListService.create())
 
   .component('carrierSelect', CarrierSelectComponent.create())
   .component('bootstrapSelect', BootstrapSelectComponent.create())
@@ -36,7 +37,7 @@ angular
         templateUrl: 'js/phone-list.tpl.html',
         controller: 'PhoneListController'
       })
-      .when('/phone/:phoneId', {
+      .when('/phone/:fileId', {
         templateUrl: 'js/phone.tpl.html',
         controller: 'PhoneController'
       })

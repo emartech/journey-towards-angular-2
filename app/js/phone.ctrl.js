@@ -6,7 +6,7 @@ angular
     $scope.phone = {};
 
     phoneRepository
-      .getOne($routeParams.phoneId)
+      .getOne($routeParams.fileId)
       .then((phone) => $scope.phone = phone);
 
   }]);

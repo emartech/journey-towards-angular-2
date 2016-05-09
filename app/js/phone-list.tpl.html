@@ -6,16 +6,17 @@
 
 <div class="row" style="margin-bottom: 20px">
     <div class="col-lg-12 form-inline">
-        <search-box on-input-change="setSearchText(value)"></search-box>
-        <carrier-select on-select="setSelectedCarrier(carrier)"></carrier-select>
+            <search-box on-input-change="phones.setSearchText(value)"></search-box>
+            <carrier-select on-select="phones.setSelectedCarrier(carrier)"></carrier-select>
+        </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3 text-center" ng-repeat="phone in phones">
+    <div class="col-md-3 text-center" ng-repeat="phone in phones.getAll()">
         <phone-list-item phone="phone"></phone-list-item>
     </div>
-    <div class="col-lg-12" ng-if="phones.length === 0">
+    <div class="col-lg-12" ng-if="!phones.hasAny()">
         <div class="alert alert-warning" role="alert"><strong>Oh god!</strong> There is no phone to show :(</div>
     </div>
 </div>
