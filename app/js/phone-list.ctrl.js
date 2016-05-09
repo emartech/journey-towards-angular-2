@@ -16,9 +16,11 @@ angular
       return $filter('filter')($scope.allPhones, { name: $scope.searchText, carrier: $scope.selectedCarrier });
     }
 
-    $scope.$watch('searchText', function() {
+    $scope.setSearchText = (value) => {
+      $scope.searchText = value;
       $scope.phones = getFilteredPhones();
-    });
+    };
+
     $scope.$watch('selectedCarrier', function() {
       $scope.phones = getFilteredPhones();
     });
