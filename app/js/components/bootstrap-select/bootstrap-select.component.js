@@ -1,13 +1,21 @@
-'use strict';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
+import template from './bootstrap-select.tpl.html';
 
+@Component({
+  selector: 'bootstrap-select',
+  template: template
+})
 export class BootstrapSelectComponent {
 
-  constructor() {
-    this.selectedOption = '';
-    this.isOpened = false;
-  }
+  @Input()
+  options = [];
 
+  @Input()
+  placeholder = '';
+
+  @Output()
+  onSelect = new EventEmitter();
 
   displaySelectedOption() {
     return this.selectedOption || this.placeholder;
@@ -22,20 +30,7 @@ export class BootstrapSelectComponent {
   select(option) {
     this.isOpened = false;
     this.selectedOption = option;
-    this.onSelect({ option });
-  }
-
-
-  static create() {
-    return {
-      bindings: {
-        options: '<',
-        onSelect: '&',
-        placeholder: '@'
-      },
-      controller: [BootstrapSelectComponent],
-      template: require('./bootstrap-select.tpl.html')
-    };
+    this.onSelect.emit(option);
   }
 
 }

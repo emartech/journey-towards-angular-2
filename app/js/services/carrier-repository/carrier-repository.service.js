@@ -1,17 +1,18 @@
-'use strict';
-
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 export class CarrierRepositoryService {
 
-  constructor($http) {
-    this._$http = $http;
+  constructor(http: Http) {
+    this._http = http;
   }
 
 
   getAll() {
-    return this._$http
-      .get('/api/carriers.json')
-      .then((response) => response.data);
+    return this._http
+      .get('/api/carriers.json').toPromise()
+      .then((response) => response.json());
   }
 
 

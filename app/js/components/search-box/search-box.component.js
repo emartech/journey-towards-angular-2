@@ -1,21 +1,18 @@
-'use strict';
+import { Component, Output, EventEmitter } from '@angular/core';
 
+import template from './search-box.tpl.html';
 
+@Component({
+  selector: 'search-box',
+  template: template
+})
 export class SearchBoxComponent {
 
+  @Output()
+  onInputChange = new EventEmitter();
+
   handleKeyUp($event) {
-    this.onInputChange({ value: $event.target.value });
-  }
-
-
-  static create() {
-    return {
-      bindings: {
-        onInputChange: '&'
-      },
-      controller: [SearchBoxComponent],
-      template: require('./search-box.tpl.html')
-    };
+    this.onInputChange.emit($event.target.value);
   }
 
 }

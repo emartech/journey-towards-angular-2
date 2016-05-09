@@ -1,35 +1,31 @@
-'use strict';
+import { Component, Output, EventEmitter } from '@angular/core';
 
+import { CarrierRepositoryService } from '../../services/carrier-repository/carrier-repository.service';
+import template from './carrier-select.tpl.html';
+import { BootstrapSelectComponent } from '../bootstrap-select/bootstrap-select.component';
 
+@Component({
+  selector: 'carrier-select',
+  template: template,
+  directives: [BootstrapSelectComponent]
+})
 export class CarrierSelectComponent {
 
-  constructor(carrierRepository) {
+  @Output()
+  onSelect = new EventEmitter();
+
+  constructor(carrierRepository: CarrierRepositoryService) {
     this._carrierRepository = carrierRepository;
     this.carriers = [];
   }
 
+  select(carrier) {
+    this.onSelect.emit(carrier);
+  }
 
-  $onInit() {
+  ngOnInit() {
     this._carrierRepository
       .getAll()
       .then((carriers) => this.carriers = carriers);
   }
-
-
-  select(carrier) {
-    this.onSelect({ carrier });
-  }
-
-
-  static create() {
-    return {
-      bindings: {
-        onSelect: '&'
-      },
-      controller: ['carrierRepository', CarrierSelectComponent],
-      template: require('./carrier-select.tpl.html')
-    };
-  }
-
 }
-

@@ -1,28 +1,23 @@
-'use strict';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 export class PhoneRepositoryService {
-
-  constructor($http) {
-    this._$http = $http;
+  constructor(http: Http) {
+    this._http = http;
   }
 
 
   getOne(phoneId) {
-    return this._$http
-      .get(`/api/${phoneId}.json`)
-      .then((response) => response.data);
+    return this._http
+      .get(`/api/${phoneId}.json`).toPromise()
+      .then((response) => response.json());
   }
 
 
   getAll() {
-    return this._$http
-      .get('/api/phones.json')
-      .then((response) => response.data);
+    return this._http
+      .get('/api/phones.json').toPromise()
+      .then((response) => response.json());
   }
-
-
-  static create() {
-    return ['$http', PhoneRepositoryService];
-  }
-
 }
