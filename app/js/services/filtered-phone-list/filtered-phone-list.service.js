@@ -5,12 +5,6 @@ import { PhoneRepositoryService } from '../phone-repository/phone-repository.ser
 export class FilteredPhoneListService {
 
   constructor(phoneRepository: PhoneRepositoryService) {
-    this._filter = function(phones, criteria) {
-      return phones.filter((phone) => {
-        return (!criteria.name || phone.name.toLowerCase().indexOf(criteria.name.toLowerCase()) !== -1)
-          && (!criteria.carrier || phone.carrier.toLowerCase() == criteria.carrier.toLowerCase());
-      });
-    };
     this._phoneRepository = phoneRepository;
 
     this._allPhones = [];
@@ -50,6 +44,16 @@ export class FilteredPhoneListService {
 
 
   _filterPhones() {
-    this._phones = this._filter(this._allPhones, { name: this._searchText, carrier: this._selectedCarrier });
+    this._phones = this._allPhones.filter((phone) => {
+      return this._filterName(phone) && this._filterCarrier(phone);
+    });
+  }
+
+  _filterName(phone) {
+    return !this._searchText || phone.name.toLowerCase().indexOf(this._searchText.toLowerCase()) !== -1;
+  }
+
+  _filterCarrier(phone) {
+    return !this._selectedCarrier || phone.carrier.toLowerCase() == this._selectedCarrier.toLowerCase();
   }
 }
