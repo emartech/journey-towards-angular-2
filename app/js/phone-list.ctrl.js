@@ -8,10 +8,6 @@ angular
     $scope.allPhones = [];
     $scope.phones = [];
 
-    $rootScope.$on('carrier-selected', function($event, carrier) {
-      $scope.selectedCarrier = carrier;
-    });
-
     function getFilteredPhones() {
       return $filter('filter')($scope.allPhones, { name: $scope.searchText, carrier: $scope.selectedCarrier });
     }
@@ -21,9 +17,10 @@ angular
       $scope.phones = getFilteredPhones();
     };
 
-    $scope.$watch('selectedCarrier', function() {
+    $scope.setSelectedCarrier = (value) => {
+      $scope.selectedCarrier = value;
       $scope.phones = getFilteredPhones();
-    });
+    };
 
     phoneRepository
       .getAll()

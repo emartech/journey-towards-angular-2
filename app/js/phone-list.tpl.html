@@ -6,9 +6,8 @@
 
 <div class="row" style="margin-bottom: 20px">
     <div class="col-lg-12 form-inline">
-            <search-box on-input-change="setSearchText(value)"></search-box>
-            <carrier-select></carrier-select>
-        </div>
+        <search-box on-input-change="setSearchText(value)"></search-box>
+        <carrier-select on-select="setSelectedCarrier(carrier)"></carrier-select>
     </div>
 </div>
 
