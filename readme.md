@@ -1,12 +1,12 @@
-# AngularJS upgrade
+# Journey towards Angular 2
 
-This is the repository for the AngularJS upgrade workshop on JsConfBp 2016.
+This is the repository for the AngularJS workshop of JsConfBp 2016.
 
 ## Getting started
 
 ```bash
-git clone https://github.com/emartech/ng-upgrade.git
-cd ng-upgrade
+git clone https://github.com/emartech/journey-towards-angular-2.git
+cd journey-towards-angular-2
 npm i
 npm start
 ```
