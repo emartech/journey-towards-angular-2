@@ -7,7 +7,6 @@ angular
       return {
         controller: ['$scope', '$rootScope', 'carrierRepository', function($scope, $rootScope, carrierRepository) {
           $scope.carriers = [];
-          $scope.isCarrierSelectorOpened = false;
 
           carrierRepository
             .getAll()
@@ -15,7 +14,6 @@ angular
 
           $scope.selectCarrier = function(carrier) {
             $rootScope.$broadcast('carrier-selected', carrier);
-            $scope.isCarrierSelectorOpened = false;
           };
         }],
         templateUrl: 'js/carrier-select.tpl.html'

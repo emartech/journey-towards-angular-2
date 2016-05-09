@@ -1,13 +1,1 @@
-<div class="btn-group" ng-class="{ open: isCarrierSelectorOpened }">
-    <button type="button" class="btn btn-default dropdown-toggle" ng-click="isCarrierSelectorOpened = !isCarrierSelectorOpened">
-        {{ selectedCarrier ? selectedCarrier : 'All carrier' }} <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-        <li><a ng-click="selectCarrier()">Select all</a></li>
-        <li ng-repeat="carrier in carriers">
-            <a ng-click="selectCarrier(carrier)">
-                {{ carrier }}
-            </a>
-        </li>
-    </ul>
-</div>
+<bootstrap-select options="carriers" on-select="selectCarrier(option)" placeholder="All carrier"></bootstrap-select>
