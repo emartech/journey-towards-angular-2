@@ -5,15 +5,14 @@ angular
   .directive('carrierSelect', [
     function() {
       return {
-        controller: ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+        controller: ['$scope', '$rootScope', 'carrierRepository', function($scope, $rootScope, carrierRepository) {
           $scope.carriers = [];
           $scope.isCarrierSelectorOpened = false;
 
-          $http.get('/api/carriers.json')
-            .then(function (response) {
-              $scope.carriers = response.data;
-            });
-          
+          carrierRepository
+            .getAll()
+            .then((carriers) => $scope.carriers = carriers);
+
           $scope.selectCarrier = function(carrier) {
             $rootScope.$broadcast('carrier-selected', carrier);
             $scope.isCarrierSelectorOpened = false;

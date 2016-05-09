@@ -2,13 +2,13 @@
 
 angular
   .module('phoneApp')
-  .controller('PhoneController', ['$http', '$routeParams', '$scope', '$rootScope', function($http, $routeParams, $scope, $rootScope) {
+  .controller('PhoneController', ['$routeParams', '$scope', '$rootScope', 'phoneRepository', function($routeParams, $scope, $rootScope, phoneRepository) {
     $rootScope.actualYear = 2016;
 
     $scope.phone = {};
 
-    $http.get('/api/' + $routeParams.phoneId + '.json')
-      .then(function(response) {
-        $scope.phone = response.data;
-      });
+    phoneRepository
+      .getOne($routeParams.phoneId)
+      .then((phone) => $scope.phone = phone);
+
   }]);
